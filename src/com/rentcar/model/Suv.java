@@ -1,11 +1,11 @@
 package com.rentcar.model;
 
-public class Suv extends Veiculo {
+public class Suv extends Veiculo implements ElegivelParaApp {
 
     private double taxaPorte;
 
-    public Suv(String marca, String modelo, String placa, double valorDiaria, double taxaPorte) {
-        super(marca, modelo, placa, valorDiaria);
+    public Suv(String marca, String modelo, String placa, double valorDiaria, int anoFabricacao, double taxaPorte) {
+        super(marca, modelo, placa, valorDiaria, anoFabricacao);
         this.taxaPorte = taxaPorte;
     }
 
@@ -16,5 +16,10 @@ public class Suv extends Veiculo {
 
     public double getTaxaPorte() {
         return taxaPorte;
+    }
+
+    @Override
+    public boolean verificarElegibilidadeApp() {
+        return (getAnoFabricacao() >= 2016);
     }
 }

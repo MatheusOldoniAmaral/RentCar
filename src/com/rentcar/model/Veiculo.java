@@ -6,6 +6,7 @@ public abstract class Veiculo {
     private String modelo;
     private String placa;
     private double valorDiaria;
+    private int anoFabricacao;
     private boolean disponivel;
 
     public void locar() {
@@ -26,11 +27,12 @@ public abstract class Veiculo {
         }
     }
 
-    public Veiculo(String marca, String modelo, String placa, double valorDiaria) {
+    public Veiculo(String marca, String modelo, String placa, double valorDiaria, int anoFabricacao) {
         this.marca = marca;
         this.modelo = modelo;
         this.placa = placa;
         this.valorDiaria = valorDiaria;
+        this.anoFabricacao = anoFabricacao;
         this.disponivel = true;
     }
 
@@ -48,6 +50,10 @@ public abstract class Veiculo {
 
     public double getValorDiaria() {
         return valorDiaria;
+    }
+
+    public int getAnoFabricacao() {
+        return anoFabricacao;
     }
 
     public boolean isDisponivel() {
