@@ -4,6 +4,9 @@ import java.time.LocalDate;
 
 public class Locacao {
 
+    private static int proximoId = 1;
+
+    private int id;
     private Cliente cliente;
     private Veiculo veiculo;
     private LocalDate dataInicio;
@@ -12,12 +15,18 @@ public class Locacao {
     private double valorTotal;
 
     public Locacao(Cliente cliente, Veiculo veiculo, LocalDate dataInicio, int quantidadeDias) {
+        this.id = proximoId;
+        proximoId++;
         this.cliente = cliente;
         this.veiculo = veiculo;
         this.dataInicio = dataInicio;
         this.quantidadeDias = quantidadeDias;
         this.locFinalizada = false;
         this.valorTotal = veiculo.calcularValorLocacao(quantidadeDias);
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Cliente getCliente() {

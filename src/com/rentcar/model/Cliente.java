@@ -8,20 +8,22 @@ public class Cliente {
     private String nome;
     private LocalDate dataNascimento;
     private long cpf;
+    private long numeroCnh;
     private String categoriaCnh;
     private LocalDate dataValidadeCnh;
-    private LocalDate dataCnhDefinitiva;
+    private LocalDate dataEmissaoCnh;
     private long telefone;
     private String email;
     private String endereco;
 
-    public Cliente(String nome, LocalDate dataNascimento, long cpf, String categoriaCnh, LocalDate dataValidadeCnh, LocalDate dataCnhDefinitiva, long telefone, String email, String endereco) {
+    public Cliente(String nome, LocalDate dataNascimento, long cpf, long numeroCnh, String categoriaCnh, LocalDate dataValidadeCnh, LocalDate dataEmissaoCnh, long telefone, String email, String endereco) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
+        this.numeroCnh = numeroCnh;
         this.categoriaCnh = categoriaCnh;
         this.dataValidadeCnh = dataValidadeCnh;
-        this.dataCnhDefinitiva = dataCnhDefinitiva;
+        this.dataEmissaoCnh = dataEmissaoCnh;
         this.telefone = telefone;
         this.email = email;
         this.endereco = endereco;
@@ -56,6 +58,10 @@ public class Cliente {
         return cpf;
     }
 
+    public long getNumeroCnh() {
+        return numeroCnh;
+    }
+
     public String getCategoriaCnh() {
         return categoriaCnh;
     }
@@ -64,8 +70,8 @@ public class Cliente {
         return dataValidadeCnh;
     }
 
-    public LocalDate getDataCnhDefinitiva() {
-        return dataCnhDefinitiva;
+    public LocalDate getDataEmissaoCnh() {
+        return dataEmissaoCnh;
     }
 
     public long getTelefone() {
