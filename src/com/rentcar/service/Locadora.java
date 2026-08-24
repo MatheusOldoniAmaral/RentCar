@@ -55,4 +55,31 @@ public class Locadora {
             throw new IllegalStateException("Não é possível finalizar: locação com o ID informado não foi encontrada.");
         }
     }
+
+    public List<Veiculo> listarVeiculos() {
+        return new ArrayList<>(veiculos);
+    }
+
+    public List<Locacao> historicoClientes(Cliente cliente) {
+        List<Locacao> historico = new ArrayList<>();
+
+        for (Locacao locacao : locacoes) {
+            if (locacao.getCliente() == cliente) {
+                historico.add(locacao);
+            }
+        }
+
+        return historico;
+    }
+
+    public double totalGastoPorCliente(Cliente cliente) {
+        double soma = 0;
+
+        for (Locacao locacao : locacoes) {
+            if (locacao.getCliente() == cliente) {
+                soma += locacao.getValorTotal();
+            }
+        }
+        return soma;
+    }
 }
