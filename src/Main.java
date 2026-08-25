@@ -113,11 +113,11 @@ public class Main {
                     System.out.println("Digite a categoria da CNH: ");
                     String categoriaCnh = scanner.nextLine();
 
-                    System.out.println("Digite a data de validade da CNH: ");
+                    System.out.println("Digite a data de validade da CNH (dd/MM/yyyy): ");
                     String textoDataValidadeCnh = scanner.nextLine();
                     LocalDate dataValidadeCnh = LocalDate.parse(textoDataValidadeCnh, formato);
 
-                    System.out.println("Digite a data de emissão da CNH: ");
+                    System.out.println("Digite a data de emissão da CNH (dd/MM/yyyy): ");
                     String textoDataEmissaoCnh = scanner.nextLine();
                     LocalDate dataEmissaoCnh = LocalDate.parse(textoDataEmissaoCnh, formato);
 
