@@ -99,7 +99,7 @@ public class Main {
 
                     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-                    System.out.println("Digite a data de nascimento (dd/mm/yyyy): ");
+                    System.out.println("Digite a data de nascimento (dd/MM/yyyy): ");
                     String textoData = scanner.nextLine();
                     LocalDate dataNascimento = LocalDate.parse(textoData, formato);
 
