@@ -135,8 +135,46 @@ public class Main {
                     locadora.cadastrarCliente(novoCliente);
                     break;
                 case 3:
+                    System.out.println("---------- REGISTRAR LOCAÇÃO ---------");
+
+                    System.out.println("Digite o CPF do cliente: ");
+                    long cpfParaLocacao = scanner.nextLong();
+                    scanner.nextLine();
+
+                    System.out.println("Digite a placa do veículo ");
+                    String placaParaLocar = scanner.nextLine();
+
+                    DateTimeFormatter formatoDate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+                    System.out.println("Digite a data de início da locação (dd/MM/yyyy): ");
+                    String textoDataInicioLocacao = scanner.nextLine();
+                    LocalDate dataInicioLocacao = LocalDate.parse(textoDataInicioLocacao, formatoDate);
+
+                    System.out.println("Digite a quantidade de dias que deseja locar: ");
+                    int quantidadeDias = scanner.nextInt();
+                    scanner.nextLine();
+
+                    try {
+                        Cliente clienteEncontrado = locadora.buscarClientePorCpf(cpfParaLocacao);
+                        Veiculo veiculoEncontrado = locadora.buscarVeiculoPorPlaca(placaParaLocar);
+                        locadora.registrarLocacao(clienteEncontrado, veiculoEncontrado, dataInicioLocacao, quantidadeDias);
+                        System.out.println("Locação registrada com sucesso!");
+                    } catch (IllegalStateException e) {
+                        System.out.println("Erro ao registrar locação: " + e.getMessage());
+                    }
                     break;
                 case 4:
+                    System.out.println("---------- FINALIZAR LOCAÇÃO ----------");
+
+                    System.out.println("Digite o ID da locação que deseja finalizar: ");
+                    int idFinalizar = scanner.nextInt();
+
+                    try {
+                        locadora.finalizarLocacao(idFinalizar);
+                        System.out.println("Locação finalizada com sucesso!");
+                    } catch (IllegalStateException e) {
+                        System.out.println("Erro ao finalizar locação: " + e.getMessage());
+                    }
                     break;
                 case 5:
                     break;

@@ -56,8 +56,32 @@ public class Locadora {
         }
     }
 
+    public Cliente buscarClientePorCpf(long cpf) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getCpf() == cpf) {
+                return cliente;
+            }
+        }
+
+        throw new IllegalStateException("Não foi possível identificar nenhum cliente: CPF não cadastrado.");
+    }
+
+    public Veiculo buscarVeiculoPorPlaca(String placa) {
+        for (Veiculo veiculo : veiculos) {
+            if (veiculo.getPlaca().equals(placa)) {
+                return veiculo;
+            }
+        }
+
+        throw new IllegalStateException("Não foi possível identificar nenhum veículo: placa não cadastrada.");
+    }
+
     public List<Veiculo> listarVeiculos() {
         return new ArrayList<>(veiculos);
+    }
+
+    public List<Cliente> listarClientes() {
+        return new ArrayList<>(clientes);
     }
 
     public List<Locacao> historicoClientes(Cliente cliente) {
