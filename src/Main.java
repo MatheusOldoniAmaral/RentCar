@@ -2,6 +2,7 @@ import com.rentcar.model.*;
 import com.rentcar.service.Locadora;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 import java.time.format.DateTimeFormatter;
 
@@ -177,10 +178,57 @@ public class Main {
                     }
                     break;
                 case 5:
+                    System.out.println("---------- LISTAR VEICULOS ----------");
+
+                    List<Veiculo> todosOsVeiculos = locadora.listarVeiculos();
+
+                    for (Veiculo veiculo : todosOsVeiculos) {
+                        System.out.println("Informações sobre os veículos");
+                        System.out.println("Marca: " + veiculo.getMarca());
+                        System.out.println("Modelo: " + veiculo.getModelo());
+                        System.out.println("Placa: " + veiculo.getPlaca());
+                        System.out.println("Valor da diária: " + veiculo.getValorDiaria());
+                        System.out.println("Ano fabricação: " + veiculo.getAnoFabricacao());
+                        System.out.println("Disponibilidade: " + veiculo.isDisponivel());
+
+                        if (veiculo instanceof Suv) {
+                            Suv suvConvertido = (Suv) veiculo;
+                            System.out.println("Taxa de porte: " + suvConvertido.getTaxaPorte());
+                        }
+
+                        if (veiculo instanceof  Utilitario) {
+                            Utilitario utilitarioConvertido = (Utilitario) veiculo;
+                            System.out.println("Capacidade de carga do veículo (em kg): " + utilitarioConvertido.getCapacidadeCargaKg());
+                            System.out.println("Taxa de valor por KG: " + utilitarioConvertido.getValorPorKg());
+                        }
+                    }
                     break;
                 case 6:
+                    System.out.println("HISTÓRICO DE LOCAÇÕES DE UM CLIENTE");
+
+                    System.out.println("Digite o CPF do cliente: ");
+                    long cpfCliente = scanner.nextLong();
+
+                    try {
+                        Cliente cliente = locadora.buscarClientePorCpf(cpfCliente);
+                        List<Locacao> historico = locadora.historicoClientes(cliente);
+
+                        for (Locacao locacao : historico) {
+                            System.out.println("ID do cliente: " + locacao.getId());
+                            System.out.println("Nome do cliente: " + locacao.getCliente().getNome());
+                            System.out.println("Marca do veículo: " + locacao.getVeiculo().getMarca());
+                            System.out.println("Modelo do veículo: " + locacao.getVeiculo().getModelo());
+                            System.out.println("Data de início da locação: " + locacao.getDataInicio());
+                            System.out.println("Quantidade de dias locado: " + locacao.getQuantidadeDias());
+                            System.out.println("Estado da locação: " + locacao.isLocFinalizada());
+                            System.out.println("Valor total do serviço: " + locacao.getValorTotal());
+                        }
+                    } catch (IllegalStateException e) {
+                        System.out.println("Erro ao listar histórico de locações: " + e.getMessage());
+                    }
                     break;
                 case 7:
+                    System.out.println("---------- TOTAL GASTO POR CLENTE ----------");
                     break;
                 case 0:
                     System.out.println("Encerrando o sistema...");

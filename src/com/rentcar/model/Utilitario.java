@@ -11,6 +11,14 @@ public class Utilitario extends Veiculo {
         this.capacidadeCargaKg = capacidadeCargaKg;
     }
 
+    public double getValorPorKg() {
+        return valorPorKg;
+    }
+
+    public double getCapacidadeCargaKg() {
+        return capacidadeCargaKg;
+    }
+
     @Override
     public double calcularValorLocacao(int quantidadeDias) {
         return ((getValorDiaria() * quantidadeDias) + (valorPorKg * capacidadeCargaKg));
