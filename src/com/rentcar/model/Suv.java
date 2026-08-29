@@ -1,6 +1,6 @@
 package com.rentcar.model;
 
-public class Suv extends Veiculo implements ElegivelParaApp {
+public class Suv extends Veiculo {
 
     private double taxaPorte;
 
@@ -16,10 +16,5 @@ public class Suv extends Veiculo implements ElegivelParaApp {
 
     public double getTaxaPorte() {
         return taxaPorte;
-    }
-
-    @Override
-    public boolean verificarElegibilidadeApp() {
-        return (getAnoFabricacao() >= 2016);
     }
 }

@@ -33,13 +33,14 @@ public class Locadora {
         return periodo.getYears() >= 1;
     }
 
-    public void registrarLocacao(Cliente cliente, Veiculo veiculo, LocalDate dataInicio, int quantidadeDias) {
+    public Locacao registrarLocacao(Cliente cliente, Veiculo veiculo, LocalDate dataInicio, int quantidadeDias) {
         if (!cnhValida(cliente)) {
             throw new IllegalStateException("Não é possível locar: CNH do cliente ainda não completou 1 ano desde a emissão.");
         }
         veiculo.locar();
         Locacao locacao = new Locacao(cliente, veiculo, dataInicio, quantidadeDias);
         locacoes.add(locacao);
+        return locacao;
     }
 
     public void finalizarLocacao(int id) {

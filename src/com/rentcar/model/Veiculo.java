@@ -14,7 +14,7 @@ public abstract class Veiculo {
             throw new IllegalStateException("Não é possível locar: veículo já está em uso.");
         } else {
             disponivel = false;
-            System.out.println("Locação realizada com sucesso.");
+            System.out.println("Locação realizada com sucesso!");
         }
     }
 
